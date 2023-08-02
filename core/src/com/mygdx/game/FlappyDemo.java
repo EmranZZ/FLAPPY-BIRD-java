@@ -6,6 +6,11 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.ScreenUtils;
 
 public class FlappyDemo extends ApplicationAdapter {
+
+	//generating Height, Width & Title of the Game Screen
+	public static final int WIDTH = 400;
+	public static final int HEIGHT = 800;
+	public static final String TITLE = "Flappy Bird";
 	SpriteBatch batch;
 	Texture img;
 	
