@@ -3,16 +3,14 @@ package com.mygdx.game;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.utils.ScreenUtils;
-import com.mygdx.game.States.GameStateManager;
-import com.mygdx.game.States.MenuState;
+import com.mygdx.game.states.GameStateManager;
+import com.mygdx.game.states.MenuState;
 
 public class FlappyDemo extends ApplicationAdapter {
 
 	//generating Height, Width & Title of the Game Screen
-	public static final int WIDTH = 400;
+	public static final int WIDTH = 500;
 	public static final int HEIGHT = 800;
 	public static final String TITLE = "Flappy Bird";
 	private GameStateManager gsm;

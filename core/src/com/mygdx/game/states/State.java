@@ -1,4 +1,4 @@
-package com.mygdx.game.States;
+package com.mygdx.game.states;
 
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -23,9 +23,8 @@ public abstract class State {
     }
 
     protected abstract void handleInput();
-    public abstract void update(float dt);
-    //where Delta time is the difference between one frame rendered and the next frame rendered
-    public abstract void render(SpriteBatch sb);
-    // where SpriteBatch renders everything to the screen in one big blob
-
+    public abstract void update(float dt); //where Delta time is the
+                                           //difference between one frame rendered and the next frame rendered
+    public abstract void render(SpriteBatch sb); //where SpriteBatch renders everything to the screen in one big blob
+    public abstract void dispose(); //dispose() for each state
 }
