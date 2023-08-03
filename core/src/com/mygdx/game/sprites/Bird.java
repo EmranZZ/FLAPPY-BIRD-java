@@ -21,9 +21,14 @@ public class Bird {
     }
 
     public void update(float dt){
-        velocity.add(0, GRAVITY, 0); //adding gravity to its velocity
+        if(position.y > 0) // GRAVITY only when y>0
+            velocity.add(0, GRAVITY, 0); //adding gravity to its velocity
+
         velocity.scl(dt); //Multiplying x,y,z by a delta time
         position.add(0, velocity.y, 0); // adding velocity of y to position
+
+        if(position.y < 0)
+            position.y = 0; //if he hits the bottom of the screen, he doesn't keep going
 
         velocity.scl(1/dt); //it inverses what we scaled previously that means we multiply with 1/dt
     }
@@ -36,4 +41,9 @@ public class Bird {
     public Texture getTexture() {
         return bird;
     }
+
+    public void jump(){
+        velocity.y = 250; //as the GRAVITY was negative, if we need to get jumping our bird we need to add a positive velocity
+    }
+
 }
