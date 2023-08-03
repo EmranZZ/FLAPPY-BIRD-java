@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.mygdx.game.FlappyDemo;
 
 public class MenuState extends State{
+    //it must to create an Texture Object for rendering any state
     private Texture background;
     private Texture playBtn;
     public MenuState(GameStateManager gsm) {
