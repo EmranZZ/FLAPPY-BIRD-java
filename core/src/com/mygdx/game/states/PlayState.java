@@ -8,6 +8,8 @@ import com.mygdx.game.FlappyDemo;
 import com.mygdx.game.sprites.Bird;
 import com.mygdx.game.sprites.Tube;
 
+import java.awt.Rectangle;
+
 public class PlayState extends State{
     private static final int TUBE_SPACING = 125; //space between tubes
     private static final int TUBE_COUNT = 4; //how many tubes total at any given time our game will actually have
@@ -49,6 +51,10 @@ public class PlayState extends State{
             //finding the left side of the screen
             if(cam.position.x - (cam.viewportWidth / 2) > tube.getPosTopTube().x + tube.getTopTube().getWidth()){ //camera were in center of the screen. So move it to left of the screen by dividing with 2
                 tube.rePosition(tube.getPosTopTube().x +((Tube.TUBE_WIDTH + TUBE_SPACING) * TUBE_COUNT));
+            }
+
+            if(tube.collides(bird.getBounds())){ //checking whether tubes touching the bird?
+                gsm.set(new PlayState(gsm));
             }
         }
         cam.update(); //for every change updating camera with update() method

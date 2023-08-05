@@ -1,6 +1,7 @@
 package com.mygdx.game.sprites;
 
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 
 import java.util.Random;
@@ -14,6 +15,7 @@ public class Tube {
     private Texture topTube, bottomTube;
     //Vector2 holder for the position of tube
     private Vector2 posTopTube, posBottomTube;
+    private Rectangle boundsTop, boundsBottom; //invisible rectangle for collision
     private Random rand; //will generate the tube in random position on the screen
 
     //creating constructor
@@ -25,6 +27,9 @@ public class Tube {
         //setting position of top tube and bottom tube
         posTopTube = new Vector2(x, rand.nextInt(FLUCTUATION) + TUBE_GAP + LOWEST_OPENING);
         posBottomTube = new Vector2(x, posTopTube.y-TUBE_GAP-bottomTube.getHeight());
+
+        boundsTop = new Rectangle(posTopTube.x, posTopTube.y, topTube.getWidth(), topTube.getHeight()); //x,y coordinate of invisible rectangle with Width and Height
+        boundsBottom = new Rectangle(posBottomTube.x, posBottomTube.y, bottomTube.getWidth(), bottomTube.getHeight());
     }
 
     public Texture getTopTube() {
@@ -46,5 +51,12 @@ public class Tube {
     public void rePosition(float x){
         posTopTube.set(x, rand.nextInt(FLUCTUATION) + TUBE_GAP + LOWEST_OPENING);
         posBottomTube.set(x, posTopTube.y-TUBE_GAP-bottomTube.getHeight());
+
+        boundsTop.setPosition(posTopTube.x, posTopTube.y); //have to reposition our invisible rectangle tubes
+        boundsBottom.setPosition(posBottomTube.x, posBottomTube.y);
+    }
+
+    public boolean collides(Rectangle player){
+        return player.overlaps(boundsTop) || player.overlaps(boundsBottom); //will return true
     }
 }

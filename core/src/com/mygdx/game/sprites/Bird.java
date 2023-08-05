@@ -1,6 +1,7 @@
 package com.mygdx.game.sprites;
 
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector3;
 
 //creating a new bird class and using that class to
@@ -13,6 +14,7 @@ public class Bird {
     //needs a position, we need to know where the bird is in our game world
     private Vector3 position; //X,Y,Z axis but we will use only X and Y axis
     private Vector3 velocity;
+    private Rectangle bounds;
     private Texture bird;
 
     //We need to have some sort of representation of gravity
@@ -20,6 +22,7 @@ public class Bird {
         position = new Vector3(x,y,0);
         velocity = new Vector3(0,0,0);
         bird = new Texture("bird.png");
+        bounds = new Rectangle(x, y, bird.getWidth(), bird.getHeight());
     }
 
     public void update(float dt){
@@ -33,6 +36,7 @@ public class Bird {
             position.y = 0; //if he hits the bottom of the screen, he doesn't keep going
 
         velocity.scl(1/dt); //it inverses what we scaled previously that means we multiply with 1/dt
+        bounds.setPosition(position.x, position.y); //everytime bird moves, we need to update our bound
     }
 
     //generating some getters so we can get some information back to our play state
@@ -48,4 +52,7 @@ public class Bird {
         velocity.y = 250; //as the GRAVITY was negative, if we need to get jumping our bird we need to add a positive velocity
     }
 
+    public Rectangle getBounds(){
+        return bounds; //creating method for getting bounds
+    }
 }
