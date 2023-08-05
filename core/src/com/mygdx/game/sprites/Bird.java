@@ -7,12 +7,14 @@ import com.badlogic.gdx.math.Vector3;
 //set the position of our bird texture of our screen
 //allowing it to jump up and down
 public class Bird {
-    //it needs a position
-    //we need to know where the bird is in our game world
+
+    private static final int GRAVITY = -15; //Creating Gravity on our bird
+    private static final int MOVEMENT = 100 ; //for Horizontal Movement
+    //needs a position, we need to know where the bird is in our game world
     private Vector3 position; //X,Y,Z axis but we will use only X and Y axis
     private Vector3 velocity;
     private Texture bird;
-    private static final int GRAVITY = -15; //Creating Gravity on our bird
+
     //We need to have some sort of representation of gravity
     public Bird(int x, int y){
         position = new Vector3(x,y,0);
@@ -25,7 +27,7 @@ public class Bird {
             velocity.add(0, GRAVITY, 0); //adding gravity to its velocity
 
         velocity.scl(dt); //Multiplying x,y,z by a delta time
-        position.add(0, velocity.y, 0); // adding velocity of y to position
+        position.add(MOVEMENT * dt, velocity.y, 0); // adding velocity of y to position
 
         if(position.y < 0)
             position.y = 0; //if he hits the bottom of the screen, he doesn't keep going
