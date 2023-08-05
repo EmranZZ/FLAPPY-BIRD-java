@@ -9,7 +9,7 @@ import java.util.Random;
 public class Tube {
     public static final int TUBE_WIDTH = 52; //Texture size 52 pixels
     private static final int FLUCTUATION = 130; //tube can move up and down randomly between 0 and 130
-    private static final int TUBE_GAP = 100; //Gap between topTube and BottomTube
+    private static final int TUBE_GAP = 110; //Gap between topTube and BottomTube
     private static final int LOWEST_OPENING = 120;//lowest opening for the bottom tube so the top of the bottom tube can't be below the area of the screen
     //Creating two texture; one for top tube, another for bottom tube
     private Texture topTube, bottomTube;
