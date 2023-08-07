@@ -28,7 +28,6 @@ public class FlappyDemo extends ApplicationAdapter {
 		music.setVolume(.3f);// .1 means 10% volume
 		music.play(); //start it soon as our game starts
 
-
 		Gdx.gl.glClearColor(1,0,0,1); //Clear Color basically wipes the screen
 		// clean and redraws everything fresh
 		

@@ -60,12 +60,12 @@ public class PlayState extends State{
             }
 
             if(tube.collides(bird.getBounds())){ //checking whether tubes touching the bird?
-                gsm.set(new PlayState(gsm));
+                gsm.set(new GameOverState(gsm)); //when collides to tube, it will show GameOver State
             }
         }
 
         if (bird.getPosition().y <= ground.getHeight() + GROUND_Y_OFFSET){ //when bird is in the ground or under the ground
-            gsm.set(new PlayState(gsm));
+            gsm.set(new GameOverState(gsm));  ////when collides to Ground, it will show GameOver State
         }
 
         cam.update(); //for every change updating camera with update() method
